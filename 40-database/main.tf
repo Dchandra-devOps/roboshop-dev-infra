@@ -55,7 +55,7 @@ resource "aws_instance" "redis" {
 
 resource "terraform_data" "redis" {
   triggers_replace = [
-    aws_instance.mongodb.id
+    aws_instance.redis.id
   ]
 
   connection {
@@ -87,7 +87,7 @@ resource "aws_instance" "rabbitmq" {
   
   tags = merge(
     {
-        Name = "${local.common_name}-mongodb"
+        Name = "${local.common_name}-rabbitmq"
     },
     local.common_tags
   )
