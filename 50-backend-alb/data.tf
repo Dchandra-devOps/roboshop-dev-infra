@@ -11,28 +11,14 @@ data "aws_ami" "roboshop_ami" {
 }
 
 
-data "aws_ssm_parameter" "mongodb_sg_id" {
-   name = "/${var.project}/${var.environment}/mongodb_sg_id"
+data "aws_ssm_parameter" "backend_alb_sg_id" {
+   name = "/${var.project}/${var.environment}/backend_alb_sg_id"
   
 }
 
-data "aws_ssm_parameter" "redis_sg_id" {
-   name = "/${var.project}/${var.environment}/redis_sg_id"
-  
-}
-
-data "aws_ssm_parameter" "rabitmq_sg_id" {
-   name = "/${var.project}/${var.environment}/redis_sg_id"
-  
-}
-
-data "aws_ssm_parameter" "mysql_sg_id" {
-   name = "/${var.project}/${var.environment}/redis_sg_id"
+data "aws_ssm_parameter" "private_subnet_ids" {
+   name = "/${var.project}/${var.environment}/private_subnet_ids"
   
 }
 
 
-data "aws_ssm_parameter" "database_subnet_ids" {
-  name = "/${var.project}/${var.environment}/database_subnet_ids"
-  
-}
