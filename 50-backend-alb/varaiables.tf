@@ -14,6 +14,3 @@ variable "domain_name" {
   default = "devaradevops.online"
 }
 
-variable "mysql_root_password" {
-    type = string
-}

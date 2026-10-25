@@ -1,35 +1,14 @@
-resource "aws_route53_record" "mongodb" {
+resource "aws_route53_record" "backend_alb" {
   zone_id = var.zone_id
-  name    = "mongodb-${var.environment}.${var.domain_name}"
+  name    = "backend_alb-${var.environment}.devaradevops.online"
   type    = "A"
-  ttl     = "3"
-  records = [aws_instance.mongodb.private_ip]
-  allow_overwrite = true
-}
-
-resource "aws_route53_record" "rabbitmq" {
-  zone_id = var.zone_id
-  name    = "rabbitmq-${var.environment}.${var.domain_name}"
-  type    = "A"
-  ttl     = "3"
-  records = [aws_instance.rabbitmq.private_ip]
-  allow_overwrite = true
-}
-
-resource "aws_route53_record" "mysql" {
-  zone_id = var.zone_id
-  name    = "mysql-${var.environment}.${var.domain_name}"
-  type    = "A"
-  ttl     = "3"
-  records = [aws_instance.mysql.private_ip]
-  allow_overwrite = true
-}
-
-resource "aws_route53_record" "redis" {
-  zone_id = var.zone_id
-  name    = "redis-${var.environment}.${var.domain_name}"
-  type    = "A"
-  ttl     = "3"
-  records = [aws_instance.redis.private_ip]
+  
+  alias {
+    # AWS details
+    name                   = aws_lb.backend_alb.dns_name
+    zone_id                = aws_lb.backend_alb.zone_id
+    evaluate_target_health = true
+  }
+  
   allow_overwrite = true
 }

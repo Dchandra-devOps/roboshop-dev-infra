@@ -1,14 +1,3 @@
-data "aws_ami" "roboshop_ami" {
-  most_recent      = true
-
-  owners           = ["973714476881"]
-
-  filter {
-    name   = "name"
-    values = ["Redhat-9-DevOps-Practice"]
-  }
-
-}
 
 
 data "aws_ssm_parameter" "backend_alb_sg_id" {
