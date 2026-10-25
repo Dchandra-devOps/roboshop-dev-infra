@@ -3,6 +3,6 @@ resource "aws_route53_record" "mongodb" {
   name    = "mongodb-${var.environment}.${var.domain_name}"
   type    = "A"
   ttl     = "3"
-  records = aws_instance.mongodb.private_ip
+  records = [aws_instance.mongodb.private_ip]
   allow_overwrite = true
 }
